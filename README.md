@@ -1,28 +1,31 @@
 
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+This package gives a simple api to create relatively simple and beautiful text fields
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Gives you the ability to create an input field
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+only create a flutter project and import the package
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+import 'package:sm_input_field/sm_input_field.dart';
+
+class Field extends StatelessWidget {
+  const Field({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InputField.fromFieldInfo(FieldInfo());
+  }
+}
+
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+no info available :)

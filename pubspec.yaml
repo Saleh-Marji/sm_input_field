@@ -1,7 +1,7 @@
 name: sm_input_field
-description: A new Flutter package project.
-version: 0.0.1
-homepage:
+description: a package to create input fields in a simple manner
+version: 1.0.0
+homepage: https://github.com/Saleh-Marji/sm_input_field.git
 
 environment:
   sdk: '>=2.19.2 <3.0.0'

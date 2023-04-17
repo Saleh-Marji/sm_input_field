@@ -17,7 +17,7 @@ class FieldInfo {
     this.hint,
     this.inputType,
     this.multiLine,
-  }) : this.controller = controller ?? TextEditingController(text: initialValue);
+  }) : controller = controller ?? TextEditingController(text: initialValue);
 
   factory FieldInfo.multiLine({
     TextEditingController? controller,
