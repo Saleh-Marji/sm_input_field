@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../utils/constants.dart';
 import '../models/field_info.dart';
+import '../utils/constants.dart';
 
 class InputField extends StatelessWidget {
   const InputField({
@@ -18,6 +18,7 @@ class InputField extends StatelessWidget {
     this.inputType,
   }) : super(key: key);
 
+  ///This constructor takes a field info object for the main properties (used mostly for forms)
   factory InputField.fromFieldInfo(
     FieldInfo info, {
     double? labelFieldSpace,
@@ -27,7 +28,7 @@ class InputField extends StatelessWidget {
       InputField(
         controller: info.controller,
         hintText: info.hint,
-        prefixIcon: info.icon,
+        prefixIcon: info.prefixIcon,
         labelText: '${info.label}${(info.required ?? false) ? ' (Required)' : ''}',
         inputType: info.inputType,
         isMultiline: info.multiLine,
@@ -36,14 +37,35 @@ class InputField extends StatelessWidget {
         elevation: elevation ?? 3,
       );
 
+  /// the controller of the field
   final TextEditingController? controller;
+
+  /// the onChanged of the field
   final ValueChanged<String>? onChanged;
-  final String? hintText, labelText;
+
+  /// the hint text shown in the field in grey
+  final String? hintText;
+
+  /// the label text show above the field
+  final String? labelText;
+
+  /// the space between the label and the field
   final double? labelFieldSpace;
+
+  /// the color of the border of the field
   final Color? borderColor;
+
+  /// the prefix icon
   final IconData? prefixIcon;
+
+  /// the elevation of the field
   final double? elevation;
+
+  /// specifies if the field is multiline, which makes the field expand up to 5 lines
+  /// and makes the keyboard of type multiline
   final bool? isMultiline;
+
+  /// specifies the keyboard type of the field
   final TextInputType? inputType;
 
   @override

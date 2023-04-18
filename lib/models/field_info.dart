@@ -1,24 +1,45 @@
 import 'package:flutter/material.dart';
 
+///This is a class to simplify the creation of a form (shown in the examples section)
+
 class FieldInfo {
+  ///The TextEditingController specific for the field of the FieldInfo
   TextEditingController controller;
-  String? hint, label;
-  IconData? icon;
+
+  ///The hint shown in the field
+  String? hint;
+
+  /// The label shown above the field in bold
+  String? label;
+
+  /// The prefix icon shown in the field
+  IconData? prefixIcon;
+
+  /// The keyboard type of the field
   TextInputType? inputType;
+
+  /// specifies if the field is multiline or not
   bool? multiLine;
+
+  /// specifies if the field is required or not
+  /// if true, a (required) is concatenated to the label
+  /// Example: a field with label 'Name'
+  /// required: true ===> 'Name (required)'
+  /// required: false ===> 'Name'
   bool? required;
 
   FieldInfo({
     TextEditingController? controller,
     String? initialValue,
     this.required,
-    this.icon,
+    this.prefixIcon,
     this.label,
     this.hint,
     this.inputType,
     this.multiLine,
   }) : controller = controller ?? TextEditingController(text: initialValue);
 
+  /// a named constructor that
   factory FieldInfo.multiLine({
     TextEditingController? controller,
     String? initialValue,
@@ -33,9 +54,15 @@ class FieldInfo {
         multiLine: true,
         hint: hint,
         label: label,
-        icon: icon,
+        prefixIcon: icon,
         required: required,
       );
 
+  /// calls the dispose method of the text editing controller
+  /// do not forget to call it in the dispose method!
+  /// void dispose() {
+  ///   info.dispose();
+  ///   super.dispose();
+  /// }
   void dispose() => controller.dispose();
 }

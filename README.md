@@ -4,11 +4,9 @@ This package gives a simple api to create relatively simple and beautiful text f
 
 ## Features
 
-Gives you the ability to create an input field
+Gives you the ability to create an input field in a simple and easy manner
 
-## Getting started
-
-only create a flutter project and import the package
+It also allows you to create forms fast and easy (check the example project)
 
 ## Usage
 
@@ -20,7 +18,41 @@ class Field extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InputField.fromFieldInfo(FieldInfo());
+    return InputField(
+      //specify the properties here
+      controller: controller,
+      labelText: 'Label',
+      //...
+    );
+  }
+}
+
+
+class SearchInputField extends StatelessWidget {
+  const SearchInputField({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SearchField();
+  }
+}
+
+
+class FieldFromInfo extends StatelessWidget {
+  const FieldFromInfo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InputField.fromFieldInfo(FieldInfo(
+      //put here the desired properties
+      label: 'Label',
+      hint: 'Hint',
+      //...
+    ),
+    // There are a few other properties specific for styling and colors specify them here!
+      borderColor: Colors.blue,
+      //...
+    );
   }
 }
 
@@ -28,4 +60,6 @@ class Field extends StatelessWidget {
 
 ## Additional information
 
-no info available :)
+for more details on each field see the api section
+
+check out the example project for more details on examples

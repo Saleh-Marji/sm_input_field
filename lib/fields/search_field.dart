@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sm_input_field/utils/constants.dart';
+import '../utils/constants.dart';
 
 import 'input_field.dart';
 
+/// this field specifies some properties
 class SearchField extends StatelessWidget {
   const SearchField({
     Key? key,
@@ -11,8 +12,13 @@ class SearchField extends StatelessWidget {
     this.borderColor,
   }) : super(key: key);
 
+  /// the controller of the search field
   final TextEditingController? controller;
+
+  /// the onChanged of the search field
   final ValueChanged<String>? onChanged;
+
+  /// the border color of the search field
   final Color? borderColor;
 
   @override
