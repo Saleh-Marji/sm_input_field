@@ -79,21 +79,35 @@ class InputField extends StatelessWidget {
       keyboardType: inputType,
       decoration: InputDecoration(
         hintText: hintText,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-        prefixIcon: prefixIcon == null ? null : Icon(prefixIcon!, size: 25),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 15,
+        ),
+        prefixIcon: prefixIcon == null
+            ? null
+            : Icon(
+                prefixIcon!,
+                size: 25,
+              ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(
+            10,
+          ),
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: borderColor ?? kColorBlue),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(
+            10,
+          ),
         ),
       ),
     );
 
     if (elevation != null) {
       widget = Material(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(
+          10,
+        ),
         elevation: elevation!,
         child: widget,
       );
@@ -105,9 +119,13 @@ class InputField extends StatelessWidget {
         children: [
           Text(
             labelText!,
-            style: kTextStyleMain.copyWith(fontWeight: FontWeight.bold),
+            style: kTextStyleMain.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          SizedBox(height: labelFieldSpace ?? 20),
+          SizedBox(
+            height: labelFieldSpace ?? 20,
+          ),
           widget,
         ],
       );
