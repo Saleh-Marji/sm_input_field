@@ -10,6 +10,7 @@ class SearchField extends StatelessWidget {
     this.controller,
     this.onChanged,
     this.borderColor,
+    this.inputType,
   }) : super(key: key);
 
   /// the controller of the search field
@@ -21,6 +22,9 @@ class SearchField extends StatelessWidget {
   /// the border color of the search field
   final Color? borderColor;
 
+  ///the input type of the search field
+  final TextInputType? inputType;
+
   @override
   Widget build(BuildContext context) {
     return InputField(
@@ -29,6 +33,7 @@ class SearchField extends StatelessWidget {
       hintText: 'Search',
       prefixIcon: Icons.search,
       borderColor: borderColor ?? kColorPurple,
+      inputType: inputType,
     );
   }
 }
