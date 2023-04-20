@@ -12,10 +12,13 @@ class InputField extends StatelessWidget {
     this.borderColor,
     this.elevation,
     this.prefixIcon,
+    this.suffixIcon,
     this.labelText,
     this.labelFieldSpace,
     this.isMultiline,
     this.inputType,
+    this.onTap,
+    this.readOnly,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -29,12 +32,15 @@ class InputField extends StatelessWidget {
         controller: info.controller,
         hintText: info.hint,
         prefixIcon: info.prefixIcon,
+        suffixIcon: info.suffixIcon,
         labelText: '${info.label}${(info.required ?? false) ? ' (Required)' : ''}',
         inputType: info.inputType,
         isMultiline: info.multiLine,
         labelFieldSpace: labelFieldSpace ?? 10,
         borderColor: borderColor,
         elevation: elevation ?? 3,
+        onTap: info.onTap,
+        readOnly: info.readOnly,
       );
 
   /// the controller of the field
@@ -58,6 +64,9 @@ class InputField extends StatelessWidget {
   /// the prefix icon
   final IconData? prefixIcon;
 
+  ///the suffix icon
+  final IconData? suffixIcon;
+
   /// the elevation of the field
   final double? elevation;
 
@@ -68,6 +77,12 @@ class InputField extends StatelessWidget {
   /// specifies the keyboard type of the field
   final TextInputType? inputType;
 
+  /// specifies if the field is read only
+  final bool? readOnly;
+
+  /// specifies the action to be taken when the field is tapped
+  final VoidCallback? onTap;
+
   @override
   Widget build(BuildContext context) {
     Widget widget = TextFormField(
@@ -77,6 +92,8 @@ class InputField extends StatelessWidget {
       minLines: 1,
       maxLines: (isMultiline ?? false) ? 5 : 1,
       keyboardType: inputType,
+      readOnly: readOnly ?? false,
+      onTap: onTap,
       decoration: InputDecoration(
         hintText: hintText,
         contentPadding: const EdgeInsets.symmetric(
@@ -87,6 +104,12 @@ class InputField extends StatelessWidget {
             ? null
             : Icon(
                 prefixIcon!,
+                size: 25,
+              ),
+        suffixIcon: suffixIcon == null
+            ? null
+            : Icon(
+                suffixIcon!,
                 size: 25,
               ),
         border: OutlineInputBorder(

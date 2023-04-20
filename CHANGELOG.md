@@ -22,5 +22,12 @@ Initial Release
     <li>Added input type feature to search field</li>
 </ul>
 
+##1.1.0
+
+<h2>Added:</h2>
+<ul>
+    <li>Added suffix icon, readonly, and on tap functionality to input field and field info</li>
+</ul>
+
 
 

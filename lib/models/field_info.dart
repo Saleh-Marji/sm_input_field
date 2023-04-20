@@ -15,6 +15,9 @@ class FieldInfo {
   /// The prefix icon shown in the field
   IconData? prefixIcon;
 
+  /// The suffix icon shown in the field
+  IconData? suffixIcon;
+
   /// The keyboard type of the field
   TextInputType? inputType;
 
@@ -28,6 +31,12 @@ class FieldInfo {
   /// required: false ===> 'Name'
   bool? required;
 
+  /// specifies if the field is read only
+  bool? readOnly;
+
+  /// specifies the action to be performed if the field is tapped
+  VoidCallback? onTap;
+
   FieldInfo({
     TextEditingController? controller,
     String? initialValue,
@@ -37,6 +46,9 @@ class FieldInfo {
     this.hint,
     this.inputType,
     this.multiLine,
+    this.readOnly,
+    this.onTap,
+    this.suffixIcon,
   }) : controller = controller ?? TextEditingController(text: initialValue);
 
   /// a named constructor that
@@ -47,6 +59,8 @@ class FieldInfo {
     String? label,
     IconData? icon,
     bool? required,
+    bool? readOnly,
+    VoidCallback? onTap,
   }) =>
       FieldInfo(
         controller: controller,
@@ -56,6 +70,8 @@ class FieldInfo {
         label: label,
         prefixIcon: icon,
         required: required,
+        readOnly: readOnly,
+        onTap: onTap,
       );
 
   /// calls the dispose method of the text editing controller
