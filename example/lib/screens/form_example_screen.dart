@@ -11,9 +11,9 @@ class FormExampleScreen extends StatefulWidget {
 
 class _FormExampleScreenState extends State<FormExampleScreen> {
   final fieldInfos = {
-    'Name': FieldInfo(initialValue: 'Saleh Marji', icon: Icons.label, required: true),
-    'Description': FieldInfo.multiLine(icon: Icons.description),
-    'Phone Number': FieldInfo(inputType: TextInputType.phone, icon: Icons.phone),
+    'Name': FieldInfo(initialValue: 'Saleh Marji', prefixIcon: Icons.label, required: true),
+    'Description': FieldInfo.multiLine(prefixIcon: Icons.description),
+    'Phone Number': FieldInfo(inputType: TextInputType.phone, prefixIcon: Icons.phone),
   };
 
   @override
@@ -33,11 +33,12 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
         children: [
           ...fieldInfos.entries.map(
             (e) => Container(
-              margin: EdgeInsets.only(bottom: 20),
+              margin: const EdgeInsets.only(bottom: 20),
               child: InputField.fromFieldInfo(
-                e.value
-                  ..label = e.key
-                  ..hint = 'Kindly enter the ${e.key.toLowerCase()}',
+                e.value.copyWith(
+                  label: e.key,
+                  hint: 'Kindly enter the ${e.key.toLowerCase()}',
+                ),
                 borderColor: Colors.blue,
               ),
             ),
