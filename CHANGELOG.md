@@ -37,4 +37,14 @@ Initial Release
 </ul>
 
 
+##1.1.2
+
+<h2>Fixed:</h2>
+<ul>
+    <li>Fixed suffix and prefix icons parameters in field info's multiline constructor</li>
+</ul>
+
+
+
+
 
