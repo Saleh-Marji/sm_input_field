@@ -29,5 +29,12 @@ Initial Release
     <li>Added suffix icon, readonly, and on tap functionality to input field and field info</li>
 </ul>
 
+##1.1.1
+
+<h2>Added:</h2>
+<ul>
+    <li>Added copy with function to field info</li>
+</ul>
+
 
 

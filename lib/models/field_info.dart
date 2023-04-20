@@ -81,4 +81,29 @@ class FieldInfo {
   ///   super.dispose();
   /// }
   void dispose() => controller.dispose();
+
+  ///This method creates a new instance with the specified attributes as the only difference between the
+  ///previous instance and the new one
+  FieldInfo copyWith({
+    TextEditingController? controller,
+    bool? required,
+    IconData? prefixIcon,
+    String? label,
+    String? hint,
+    TextInputType? inputType,
+    bool? multiLine,
+    VoidCallback? onTap,
+    IconData? suffixIcon,
+  }) =>
+      FieldInfo(
+        controller: controller ?? this.controller,
+        required: required ?? this.required,
+        prefixIcon: prefixIcon ?? this.prefixIcon,
+        label: label ?? this.label,
+        hint: hint ?? this.hint,
+        inputType: inputType ?? this.inputType,
+        multiLine: multiLine ?? this.multiLine,
+        onTap: onTap ?? this.onTap,
+        suffixIcon: suffixIcon ?? this.suffixIcon,
+      );
 }
