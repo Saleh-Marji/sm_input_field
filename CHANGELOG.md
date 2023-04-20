@@ -1,4 +1,11 @@
 
+## 1.1.4
+
+<h2>Fixed:</h2>
+<ul>
+    <li>Fixed copy with method in input field (added readonly as parameter)</li>
+</ul>
+
 ## 1.1.3
 
 <h2>Fixed:</h2>

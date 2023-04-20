@@ -95,6 +95,7 @@ class FieldInfo {
     TextInputType? inputType,
     bool? multiLine,
     VoidCallback? onTap,
+    bool? readOnly,
     IconData? suffixIcon,
   }) =>
       FieldInfo(
@@ -106,6 +107,7 @@ class FieldInfo {
         inputType: inputType ?? this.inputType,
         multiLine: multiLine ?? this.multiLine,
         onTap: onTap ?? this.onTap,
+        readOnly: readOnly ?? this.readOnly,
         suffixIcon: suffixIcon ?? this.suffixIcon,
       );
 }
