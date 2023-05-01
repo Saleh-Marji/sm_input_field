@@ -1,4 +1,11 @@
 
+## 1.1.5
+
+<h2>Fixed:</h2>
+<ul>
+    <li>Fixed label text in input field from field info constructor, was giving null text when null</li>
+</ul>
+
 ## 1.1.4
 
 <h2>Fixed:</h2>
