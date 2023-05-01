@@ -1,11 +1,17 @@
 import 'package:example/screens/regular_fields_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:sm_input_field/utils/constants.dart';
 
 import 'form_example_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +23,22 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            TextFormField(
+              style: kTextStyleMain,
+              controller: TextEditingController(),
+              decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 60,
+                    vertical: 15,
+                  ),
+                  prefixIcon: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.add),
+                      Text('t'),
+                    ],
+                  )),
+            ),
             ...<String, Widget>{
               'Regular Fields': const RegularFieldsScreen(),
               'Form Example': const FormExampleScreen(),

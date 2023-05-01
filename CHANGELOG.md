@@ -1,4 +1,11 @@
 
+## 1.2.0
+
+<h2>Added:</h2>
+<ul>
+    <li>Added inner label text functionality in input field and field info</li>
+</ul>
+
 ## 1.1.5
 
 <h2>Fixed:</h2>

@@ -12,6 +12,9 @@ class FieldInfo {
   /// The label shown above the field in bold
   String? label;
 
+  /// The label shown inside the field to the right of the prefix icon
+  String? innerLabel;
+
   /// The prefix icon shown in the field
   IconData? prefixIcon;
 
@@ -43,6 +46,7 @@ class FieldInfo {
     this.required,
     this.prefixIcon,
     this.label,
+    this.innerLabel,
     this.hint,
     this.inputType,
     this.multiLine,
@@ -56,6 +60,7 @@ class FieldInfo {
     TextEditingController? controller,
     String? initialValue,
     String? hint,
+    String? innerLabel,
     String? label,
     IconData? prefixIcon,
     IconData? suffixIcon,
@@ -69,6 +74,7 @@ class FieldInfo {
         multiLine: true,
         hint: hint,
         label: label,
+        innerLabel: innerLabel,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         required: required,
@@ -92,6 +98,7 @@ class FieldInfo {
     IconData? prefixIcon,
     String? label,
     String? hint,
+    String? innerLabel,
     TextInputType? inputType,
     bool? multiLine,
     VoidCallback? onTap,
@@ -103,6 +110,7 @@ class FieldInfo {
         required: required ?? this.required,
         prefixIcon: prefixIcon ?? this.prefixIcon,
         label: label ?? this.label,
+        innerLabel: innerLabel ?? this.innerLabel,
         hint: hint ?? this.hint,
         inputType: inputType ?? this.inputType,
         multiLine: multiLine ?? this.multiLine,

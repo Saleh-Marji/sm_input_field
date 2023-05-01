@@ -9,6 +9,7 @@ class InputField extends StatelessWidget {
     this.controller,
     this.onChanged,
     this.hintText,
+    this.innerLabelText,
     this.borderColor,
     this.elevation,
     this.prefixIcon,
@@ -36,6 +37,7 @@ class InputField extends StatelessWidget {
         labelText: info.label == null ? null : '${info.label}${(info.required ?? false) ? ' (Required)' : ''}',
         inputType: info.inputType,
         isMultiline: info.multiLine,
+        innerLabelText: info.innerLabel,
         labelFieldSpace: labelFieldSpace ?? 10,
         borderColor: borderColor,
         elevation: elevation ?? 3,
@@ -54,6 +56,9 @@ class InputField extends StatelessWidget {
 
   /// the label text show above the field
   final String? labelText;
+
+  /// the label that appears to the right of the suffix icon (suffix icon can be null)
+  final String? innerLabelText;
 
   /// the space between the label and the field
   final double? labelFieldSpace;
@@ -85,6 +90,19 @@ class InputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget? prefixIconWidget;
+    if (prefixIcon != null || innerLabelText != null) {
+      List<Widget> children = [
+        if (prefixIcon != null) Icon(prefixIcon, size: 25),
+        if (prefixIcon != null && innerLabelText != null) const SizedBox(width: 10),
+        if (innerLabelText != null)
+          Container(
+            margin: const EdgeInsets.only(right: 10),
+            child: Text(innerLabelText!, style: kTextStyleMain),
+          )
+      ];
+      prefixIconWidget = Row(mainAxisSize: MainAxisSize.min, children: children);
+    }
     Widget widget = TextFormField(
       controller: controller,
       onChanged: onChanged,
@@ -100,12 +118,7 @@ class InputField extends StatelessWidget {
           horizontal: 10,
           vertical: 15,
         ),
-        prefixIcon: prefixIcon == null
-            ? null
-            : Icon(
-                prefixIcon!,
-                size: 25,
-              ),
+        prefixIcon: prefixIconWidget,
         suffixIcon: suffixIcon == null
             ? null
             : Icon(
