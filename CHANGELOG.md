@@ -1,4 +1,11 @@
 
+## 1.2.1
+
+<h2>Fixed:</h2>
+<ul>
+    <li>Prefix icons were pretty close to the edge of the field</li>
+</ul>
+
 ## 1.2.0
 
 <h2>Added:</h2>

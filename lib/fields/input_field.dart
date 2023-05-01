@@ -93,6 +93,7 @@ class InputField extends StatelessWidget {
     Widget? prefixIconWidget;
     if (prefixIcon != null || innerLabelText != null) {
       List<Widget> children = [
+        const SizedBox(width: 10),
         if (prefixIcon != null) Icon(prefixIcon, size: 25),
         if (prefixIcon != null && innerLabelText != null) const SizedBox(width: 10),
         if (innerLabelText != null)
