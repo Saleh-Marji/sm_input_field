@@ -23,22 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
-              style: kTextStyleMain,
-              controller: TextEditingController(),
-              decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(
-                    horizontal: 60,
-                    vertical: 15,
-                  ),
-                  prefixIcon: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.add),
-                      Text('t'),
-                    ],
-                  )),
-            ),
             ...<String, Widget>{
               'Regular Fields': const RegularFieldsScreen(),
               'Form Example': const FormExampleScreen(),
