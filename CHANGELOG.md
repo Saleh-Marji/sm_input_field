@@ -1,5 +1,12 @@
 
 
+## 1.2.5
+
+<h2>Changed:</h2>
+<ul>
+    <li>Small edit: inner label required: (+ ' *' to '*'</li>
+</ul>
+
 ## 1.2.4
 
 <h2>Changed:</h2>
