@@ -1,4 +1,11 @@
 
+## 1.2.3
+
+<h2>Fixed:</h2>
+<ul>
+    <li>Fixed a condition in the from field info constructor of input field</li>
+</ul>
+
 ## 1.2.2
 
 <h2>Fixed:</h2>
