@@ -37,7 +37,7 @@ class InputField extends StatelessWidget {
         labelText: info.label == null ? null : '${info.label}${(info.required ?? false) ? ' (Required)' : ''}',
         inputType: info.inputType,
         isMultiline: info.multiLine,
-        innerLabelText: info.label == null
+        innerLabelText: info.innerLabel == null
             ? null
             : '${info.innerLabel} ${((info.label == null && (info.required ?? false)) ? ' (Required)' : '')}',
         labelFieldSpace: labelFieldSpace ?? 10,
