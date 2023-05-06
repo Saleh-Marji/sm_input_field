@@ -34,12 +34,14 @@ class InputField extends StatelessWidget {
         hintText: info.hint,
         prefixIcon: info.prefixIcon,
         suffixIcon: info.suffixIcon,
-        labelText: info.label == null ? null : '${info.label}${(info.required ?? false) ? ' (Required)' : ''}',
+        labelText: info.label == null
+            ? null
+            : '${info.label}${(info.required ?? false) ? (info.requiredString ?? ' (Required)') : ''}',
         inputType: info.inputType,
         isMultiline: info.multiLine,
         innerLabelText: info.innerLabel == null
             ? null
-            : '${info.innerLabel} ${((info.label == null && (info.required ?? false)) ? ' (Required)' : '')}',
+            : '${info.innerLabel} ${((info.label == null && (info.required ?? false)) ? (info.requiredString ?? '*') : '')}',
         labelFieldSpace: labelFieldSpace ?? 10,
         borderColor: borderColor,
         elevation: elevation ?? 3,

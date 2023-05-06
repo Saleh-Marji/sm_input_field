@@ -32,9 +32,12 @@ class FieldInfo {
   /// Example: a field with label 'Name'
   /// required: true ===> 'Name (Required)'
   /// required: false ===> 'Name'
-  /// if the label is null and the inner label is not null the
-  /// required word will be concatenated to the inner label
+  /// if the label is null and the inner label is not null
+  /// an asterisk will be concatenated to the inner label
   bool? required;
+
+  /// specifies what is concatenated to the string if it is required
+  String? requiredString;
 
   /// specifies if the field is read only
   bool? readOnly;
@@ -46,6 +49,7 @@ class FieldInfo {
     TextEditingController? controller,
     String? initialValue,
     this.required,
+    this.requiredString,
     this.prefixIcon,
     this.label,
     this.innerLabel,
@@ -67,6 +71,7 @@ class FieldInfo {
     IconData? prefixIcon,
     IconData? suffixIcon,
     bool? required,
+    String? requiredString,
     bool? readOnly,
     VoidCallback? onTap,
   }) =>
@@ -82,6 +87,7 @@ class FieldInfo {
         required: required,
         readOnly: readOnly,
         onTap: onTap,
+        requiredString: requiredString,
       );
 
   /// calls the dispose method of the text editing controller
@@ -97,6 +103,7 @@ class FieldInfo {
   FieldInfo copyWith({
     TextEditingController? controller,
     bool? required,
+    String? requiredString,
     IconData? prefixIcon,
     String? label,
     String? hint,
@@ -110,6 +117,7 @@ class FieldInfo {
       FieldInfo(
         controller: controller ?? this.controller,
         required: required ?? this.required,
+        requiredString: requiredString ?? this.requiredString,
         prefixIcon: prefixIcon ?? this.prefixIcon,
         label: label ?? this.label,
         innerLabel: innerLabel ?? this.innerLabel,

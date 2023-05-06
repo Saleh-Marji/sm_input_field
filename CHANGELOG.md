@@ -1,4 +1,13 @@
 
+
+## 1.2.4
+
+<h2>Changed:</h2>
+<ul>
+    <li>Added option to specify what is concatenated on required</li>
+    <li>Changed what is concatenated to required inner label from ' (Required)' to '*'</li>
+</ul>
+
 ## 1.2.3
 
 <h2>Fixed:</h2>
