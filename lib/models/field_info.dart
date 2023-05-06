@@ -28,10 +28,12 @@ class FieldInfo {
   bool? multiLine;
 
   /// specifies if the field is required or not
-  /// if true, a (required) is concatenated to the label
+  /// if true, a (Required) is concatenated to the label
   /// Example: a field with label 'Name'
-  /// required: true ===> 'Name (required)'
+  /// required: true ===> 'Name (Required)'
   /// required: false ===> 'Name'
+  /// if the label is null and the inner label is not null the
+  /// required word will be concatenated to the inner label
   bool? required;
 
   /// specifies if the field is read only

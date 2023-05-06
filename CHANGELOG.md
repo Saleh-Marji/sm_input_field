@@ -1,4 +1,11 @@
 
+## 1.2.2
+
+<h2>Fixed:</h2>
+<ul>
+    <li>Added required functionality to inner label text</li>
+</ul>
+
 ## 1.2.1
 
 <h2>Fixed:</h2>
