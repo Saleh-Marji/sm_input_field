@@ -1,5 +1,12 @@
 
 
+## 1.2.6
+
+<h2>Added:</h2>
+<ul>
+    <li>Added obscure functionality</li>
+</ul>
+
 ## 1.2.5
 
 <h2>Changed:</h2>

@@ -45,6 +45,9 @@ class FieldInfo {
   /// specifies the action to be performed if the field is tapped
   VoidCallback? onTap;
 
+  /// specifies if the field input is obscured
+  bool? isObscure;
+
   FieldInfo({
     TextEditingController? controller,
     String? initialValue,
@@ -59,6 +62,7 @@ class FieldInfo {
     this.readOnly,
     this.onTap,
     this.suffixIcon,
+    this.isObscure,
   }) : controller = controller ?? TextEditingController(text: initialValue);
 
   /// a named constructor that

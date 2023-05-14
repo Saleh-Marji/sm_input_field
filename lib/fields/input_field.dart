@@ -20,6 +20,7 @@ class InputField extends StatelessWidget {
     this.inputType,
     this.onTap,
     this.readOnly,
+    this.isObscure,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -47,6 +48,7 @@ class InputField extends StatelessWidget {
         elevation: elevation ?? 3,
         onTap: info.onTap,
         readOnly: info.readOnly,
+        isObscure: info.isObscure,
       );
 
   /// the controller of the field
@@ -83,6 +85,9 @@ class InputField extends StatelessWidget {
   /// and makes the keyboard of type multiline
   final bool? isMultiline;
 
+  /// specifies if the field input is obscured
+  final bool? isObscure;
+
   /// specifies the keyboard type of the field
   final TextInputType? inputType;
 
@@ -117,6 +122,7 @@ class InputField extends StatelessWidget {
       keyboardType: inputType,
       readOnly: readOnly ?? false,
       onTap: onTap,
+      obscureText: isObscure ?? false,
       decoration: InputDecoration(
         hintText: hintText,
         contentPadding: const EdgeInsets.symmetric(
