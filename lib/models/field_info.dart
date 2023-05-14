@@ -75,6 +75,7 @@ class FieldInfo {
     IconData? prefixIcon,
     IconData? suffixIcon,
     bool? required,
+    bool? isObscure,
     String? requiredString,
     bool? readOnly,
     VoidCallback? onTap,
@@ -91,6 +92,7 @@ class FieldInfo {
         required: required,
         readOnly: readOnly,
         onTap: onTap,
+        isObscure: isObscure,
         requiredString: requiredString,
       );
 
@@ -114,6 +116,7 @@ class FieldInfo {
     String? innerLabel,
     TextInputType? inputType,
     bool? multiLine,
+    bool? isObscure,
     VoidCallback? onTap,
     bool? readOnly,
     IconData? suffixIcon,
@@ -129,6 +132,7 @@ class FieldInfo {
         inputType: inputType ?? this.inputType,
         multiLine: multiLine ?? this.multiLine,
         onTap: onTap ?? this.onTap,
+        isObscure: isObscure ?? this.isObscure,
         readOnly: readOnly ?? this.readOnly,
         suffixIcon: suffixIcon ?? this.suffixIcon,
       );

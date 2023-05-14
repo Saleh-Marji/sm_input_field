@@ -1,5 +1,12 @@
 
 
+## 1.2.7
+
+<h2>Added:</h2>
+<ul>
+    <li>Fixed copy with function</li>
+</ul>
+
 ## 1.2.6
 
 <h2>Added:</h2>
