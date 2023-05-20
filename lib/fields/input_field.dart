@@ -24,6 +24,8 @@ class InputField extends StatelessWidget {
     this.maxLines,
     this.minLines,
     this.contentPadding,
+    this.inputDecoration,
+    this.fillColor,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -33,6 +35,8 @@ class InputField extends StatelessWidget {
     Color? borderColor,
     double? elevation,
     EdgeInsets? contentPadding,
+    InputDecoration? inputDecoration,
+    Color? fillColor,
   }) =>
       InputField(
         controller: info.controller,
@@ -40,6 +44,8 @@ class InputField extends StatelessWidget {
         contentPadding: contentPadding,
         prefixIcon: info.prefixIcon,
         suffixIcon: info.suffixIcon,
+        inputDecoration: inputDecoration,
+        fillColor: fillColor,
         labelText: info.label == null
             ? null
             : '${info.label}${(info.required ?? false) ? (info.requiredString ?? ' (Required)') : ''}',
@@ -113,6 +119,12 @@ class InputField extends StatelessWidget {
   /// specifies content padding
   final EdgeInsets? contentPadding;
 
+  /// optional custom decoration
+  final InputDecoration? inputDecoration;
+
+  /// customize the fill color of the field
+  final Color? fillColor;
+
   @override
   Widget build(BuildContext context) {
     Widget? prefixIconWidget;
@@ -139,32 +151,35 @@ class InputField extends StatelessWidget {
       readOnly: readOnly ?? false,
       onTap: onTap,
       obscureText: isObscure ?? false,
-      decoration: InputDecoration(
-        hintText: hintText,
-        contentPadding: contentPadding ??
-            const EdgeInsets.symmetric(
-              horizontal: 10,
-              vertical: 15,
-            ),
-        prefixIcon: prefixIconWidget,
-        suffixIcon: suffixIcon == null
-            ? null
-            : Icon(
-                suffixIcon!,
-                size: 25,
+      decoration: inputDecoration ??
+          InputDecoration(
+            filled: fillColor != null,
+            fillColor: fillColor,
+            hintText: hintText,
+            contentPadding: contentPadding ??
+                const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 15,
+                ),
+            prefixIcon: prefixIconWidget,
+            suffixIcon: suffixIcon == null
+                ? null
+                : Icon(
+                    suffixIcon!,
+                    size: 25,
+                  ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(
+                10,
               ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(
-            10,
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: borderColor ?? kColorBlue),
+              borderRadius: BorderRadius.circular(
+                10,
+              ),
+            ),
           ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: borderColor ?? kColorBlue),
-          borderRadius: BorderRadius.circular(
-            10,
-          ),
-        ),
-      ),
     );
 
     if (elevation != null) {

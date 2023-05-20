@@ -1,5 +1,12 @@
 
 
+## 1.2.9
+
+<h2>Added:</h2>
+<ul>
+    <li>Added custom input decoration and fill color functionalities</li>
+</ul>
+
 ## 1.2.8
 
 <h2>Added:</h2>
