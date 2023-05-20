@@ -27,6 +27,12 @@ class FieldInfo {
   /// specifies if the field is multiline or not
   bool? multiLine;
 
+  /// specifies min lines for multi-line fields
+  int? minLines;
+
+  /// specifies max lines for multi-line fields
+  int? maxLines;
+
   /// specifies if the field is required or not
   /// if true, a (Required) is concatenated to the label
   /// Example: a field with label 'Name'
@@ -63,6 +69,8 @@ class FieldInfo {
     this.onTap,
     this.suffixIcon,
     this.isObscure,
+    this.maxLines,
+    this.minLines,
   }) : controller = controller ?? TextEditingController(text: initialValue);
 
   /// a named constructor that
@@ -79,6 +87,8 @@ class FieldInfo {
     String? requiredString,
     bool? readOnly,
     VoidCallback? onTap,
+    int? minLines,
+    int? maxLines,
   }) =>
       FieldInfo(
         controller: controller,
@@ -94,6 +104,8 @@ class FieldInfo {
         onTap: onTap,
         isObscure: isObscure,
         requiredString: requiredString,
+        maxLines: maxLines,
+        minLines: minLines,
       );
 
   /// calls the dispose method of the text editing controller
@@ -120,6 +132,8 @@ class FieldInfo {
     VoidCallback? onTap,
     bool? readOnly,
     IconData? suffixIcon,
+    int? minLines,
+    int? maxLines,
   }) =>
       FieldInfo(
         controller: controller ?? this.controller,
@@ -135,5 +149,7 @@ class FieldInfo {
         isObscure: isObscure ?? this.isObscure,
         readOnly: readOnly ?? this.readOnly,
         suffixIcon: suffixIcon ?? this.suffixIcon,
+        minLines: minLines ?? this.minLines,
+        maxLines: maxLines ?? this.maxLines,
       );
 }

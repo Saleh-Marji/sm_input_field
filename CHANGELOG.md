@@ -1,8 +1,15 @@
 
 
-## 1.2.7
+## 1.2.8
 
 <h2>Added:</h2>
+<ul>
+    <li>Added content padding, min and max lines functionalities</li>
+</ul>
+
+## 1.2.7
+
+<h2>Fixes:</h2>
 <ul>
     <li>Fixed copy with function</li>
 </ul>

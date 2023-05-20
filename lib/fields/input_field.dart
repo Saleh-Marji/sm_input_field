@@ -21,6 +21,9 @@ class InputField extends StatelessWidget {
     this.onTap,
     this.readOnly,
     this.isObscure,
+    this.maxLines,
+    this.minLines,
+    this.contentPadding,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -29,10 +32,12 @@ class InputField extends StatelessWidget {
     double? labelFieldSpace,
     Color? borderColor,
     double? elevation,
+    EdgeInsets? contentPadding,
   }) =>
       InputField(
         controller: info.controller,
         hintText: info.hint,
+        contentPadding: contentPadding,
         prefixIcon: info.prefixIcon,
         suffixIcon: info.suffixIcon,
         labelText: info.label == null
@@ -49,6 +54,8 @@ class InputField extends StatelessWidget {
         onTap: info.onTap,
         readOnly: info.readOnly,
         isObscure: info.isObscure,
+        minLines: info.minLines,
+        maxLines: info.maxLines,
       );
 
   /// the controller of the field
@@ -85,6 +92,12 @@ class InputField extends StatelessWidget {
   /// and makes the keyboard of type multiline
   final bool? isMultiline;
 
+  /// specifies min lines for multi-line fields
+  final int? minLines;
+
+  /// specifies max lines for multi-line fields
+  final int? maxLines;
+
   /// specifies if the field input is obscured
   final bool? isObscure;
 
@@ -96,6 +109,9 @@ class InputField extends StatelessWidget {
 
   /// specifies the action to be taken when the field is tapped
   final VoidCallback? onTap;
+
+  /// specifies content padding
+  final EdgeInsets? contentPadding;
 
   @override
   Widget build(BuildContext context) {
@@ -117,18 +133,19 @@ class InputField extends StatelessWidget {
       controller: controller,
       onChanged: onChanged,
       style: kTextStyleMain,
-      minLines: 1,
-      maxLines: (isMultiline ?? false) ? 5 : 1,
+      minLines: (isMultiline ?? false) ? minLines ?? 1 : 1,
+      maxLines: (isMultiline ?? false) ? maxLines ?? 5 : 1,
       keyboardType: inputType,
       readOnly: readOnly ?? false,
       onTap: onTap,
       obscureText: isObscure ?? false,
       decoration: InputDecoration(
         hintText: hintText,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 15,
-        ),
+        contentPadding: contentPadding ??
+            const EdgeInsets.symmetric(
+              horizontal: 10,
+              vertical: 15,
+            ),
         prefixIcon: prefixIconWidget,
         suffixIcon: suffixIcon == null
             ? null

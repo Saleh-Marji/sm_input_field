@@ -1,6 +1,6 @@
 name: sm_input_field
 description: a package to create input fields in a simple manner, facilitates the easy and simple creation of beautiful forms too
-version: 1.2.7
+version: 1.2.8
 homepage: https://github.com/Saleh-Marji/sm_input_field.git
 
 environment:
