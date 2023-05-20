@@ -26,6 +26,12 @@ class InputField extends StatelessWidget {
     this.contentPadding,
     this.inputDecoration,
     this.fillColor,
+    this.allTextStyle,
+    this.textStyle,
+    this.hintStyle,
+    this.innerLabelStyle,
+    this.labelStyle,
+    this.labelIsBold,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -37,6 +43,12 @@ class InputField extends StatelessWidget {
     EdgeInsets? contentPadding,
     InputDecoration? inputDecoration,
     Color? fillColor,
+    TextStyle? textStyle,
+    TextStyle? allTextStyle,
+    TextStyle? labelStyle,
+    TextStyle? hintStyle,
+    TextStyle? innerLabelStyle,
+    bool? labelIsBold,
   }) =>
       InputField(
         controller: info.controller,
@@ -62,6 +74,13 @@ class InputField extends StatelessWidget {
         isObscure: info.isObscure,
         minLines: info.minLines,
         maxLines: info.maxLines,
+        hintStyle: hintStyle,
+        textStyle: textStyle,
+        labelStyle: labelStyle,
+        allTextStyle: allTextStyle,
+        innerLabelStyle: innerLabelStyle,
+        labelIsBold: labelIsBold,
+        onChanged: info.onChanged,
       );
 
   /// the controller of the field
@@ -125,6 +144,24 @@ class InputField extends StatelessWidget {
   /// customize the fill color of the field
   final Color? fillColor;
 
+  /// customizes the style of the field text
+  final TextStyle? textStyle;
+
+  /// customizes the style of the inner label
+  final TextStyle? innerLabelStyle;
+
+  /// customizes the style of the hint
+  final TextStyle? hintStyle;
+
+  /// customizes the style of the label
+  final TextStyle? labelStyle;
+
+  /// customizes the all the styles of the text field with the label being bold if not canceled by [labelIsBold]
+  final TextStyle? allTextStyle;
+
+  /// specifies if the label should be bold
+  final bool? labelIsBold;
+
   @override
   Widget build(BuildContext context) {
     Widget? prefixIconWidget;
@@ -136,7 +173,7 @@ class InputField extends StatelessWidget {
         if (innerLabelText != null)
           Container(
             margin: const EdgeInsets.only(right: 10),
-            child: Text(innerLabelText!, style: kTextStyleMain),
+            child: Text(innerLabelText!, style: allTextStyle ?? innerLabelStyle ?? kTextStyleMain),
           )
       ];
       prefixIconWidget = Row(mainAxisSize: MainAxisSize.min, children: children);
@@ -144,7 +181,7 @@ class InputField extends StatelessWidget {
     Widget widget = TextFormField(
       controller: controller,
       onChanged: onChanged,
-      style: kTextStyleMain,
+      style: allTextStyle ?? textStyle ?? kTextStyleMain,
       minLines: (isMultiline ?? false) ? minLines ?? 1 : 1,
       maxLines: (isMultiline ?? false) ? maxLines ?? 5 : 1,
       keyboardType: inputType,
@@ -156,6 +193,7 @@ class InputField extends StatelessWidget {
             filled: fillColor != null,
             fillColor: fillColor,
             hintText: hintText,
+            hintStyle: allTextStyle ?? hintStyle,
             contentPadding: contentPadding ??
                 const EdgeInsets.symmetric(
                   horizontal: 10,
@@ -198,8 +236,8 @@ class InputField extends StatelessWidget {
         children: [
           Text(
             labelText!,
-            style: kTextStyleMain.copyWith(
-              fontWeight: FontWeight.bold,
+            style: (allTextStyle ?? labelStyle ?? kTextStyleMain).copyWith(
+              fontWeight: labelIsBold ?? true ? FontWeight.bold : null,
             ),
           ),
           SizedBox(

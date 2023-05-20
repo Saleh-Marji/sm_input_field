@@ -54,6 +54,9 @@ class FieldInfo {
   /// specifies if the field input is obscured
   bool? isObscure;
 
+  /// specifies the onChanged method
+  void Function(String input)? onChanged;
+
   FieldInfo({
     TextEditingController? controller,
     String? initialValue,
@@ -71,6 +74,7 @@ class FieldInfo {
     this.isObscure,
     this.maxLines,
     this.minLines,
+    this.onChanged,
   }) : controller = controller ?? TextEditingController(text: initialValue);
 
   /// a named constructor that
@@ -89,6 +93,7 @@ class FieldInfo {
     VoidCallback? onTap,
     int? minLines,
     int? maxLines,
+    void Function(String input)? onChanged,
   }) =>
       FieldInfo(
         controller: controller,
@@ -106,6 +111,7 @@ class FieldInfo {
         requiredString: requiredString,
         maxLines: maxLines,
         minLines: minLines,
+        onChanged: onChanged,
       );
 
   /// calls the dispose method of the text editing controller
@@ -134,6 +140,7 @@ class FieldInfo {
     IconData? suffixIcon,
     int? minLines,
     int? maxLines,
+    void Function(String input)? onChanged,
   }) =>
       FieldInfo(
         controller: controller ?? this.controller,
@@ -151,5 +158,6 @@ class FieldInfo {
         suffixIcon: suffixIcon ?? this.suffixIcon,
         minLines: minLines ?? this.minLines,
         maxLines: maxLines ?? this.maxLines,
+        onChanged: onChanged ?? this.onChanged,
       );
 }

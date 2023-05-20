@@ -1,5 +1,13 @@
 
 
+## 1.3.0
+
+<h2>Added:</h2>
+<ul>
+    <li>Added the ability to customize most of the text styles in the field</li>
+    <li>Added the ability to specify the onChanged in the FieldInfo</li>
+</ul>
+
 ## 1.2.9
 
 <h2>Added:</h2>
