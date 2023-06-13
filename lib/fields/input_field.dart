@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../models/field_info.dart';
 import '../utils/constants.dart';
 
+typedef InputDecorationBuilder = InputDecoration Function(InputDecoration inputDecoration);
+
 class InputField extends StatelessWidget {
   const InputField({
     Key? key,
@@ -32,6 +34,7 @@ class InputField extends StatelessWidget {
     this.innerLabelStyle,
     this.labelStyle,
     this.labelIsBold,
+    this.inputDecorationBuilder,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -42,6 +45,7 @@ class InputField extends StatelessWidget {
     double? elevation,
     EdgeInsets? contentPadding,
     InputDecoration? inputDecoration,
+    InputDecorationBuilder? inputDecorationBuilder,
     Color? fillColor,
     TextStyle? textStyle,
     TextStyle? allTextStyle,
@@ -81,6 +85,7 @@ class InputField extends StatelessWidget {
         innerLabelStyle: innerLabelStyle,
         labelIsBold: labelIsBold,
         onChanged: info.onChanged,
+        inputDecorationBuilder: inputDecorationBuilder,
       );
 
   /// the controller of the field
@@ -141,6 +146,9 @@ class InputField extends StatelessWidget {
   /// optional custom decoration
   final InputDecoration? inputDecoration;
 
+  /// optional custom decoration builder (to be used in order to copyWith the decoration)
+  final InputDecorationBuilder? inputDecorationBuilder;
+
   /// customize the fill color of the field
   final Color? fillColor;
 
@@ -178,6 +186,41 @@ class InputField extends StatelessWidget {
       ];
       prefixIconWidget = Row(mainAxisSize: MainAxisSize.min, children: children);
     }
+    var defaultInputDecoration = inputDecoration ??
+        InputDecoration(
+          filled: fillColor != null,
+          fillColor: fillColor,
+          hintText: hintText,
+          hintStyle: allTextStyle ?? hintStyle,
+          contentPadding: contentPadding ??
+              const EdgeInsets.symmetric(
+                horizontal: 10,
+                vertical: 15,
+              ),
+          prefixIcon: prefixIconWidget,
+          suffixIcon: suffixIcon == null
+              ? null
+              : Icon(
+                  suffixIcon!,
+                  size: 25,
+                ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+              10,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: borderColor ?? kColorBlue),
+            borderRadius: BorderRadius.circular(
+              10,
+            ),
+          ),
+        );
+
+    if (inputDecorationBuilder != null) {
+      defaultInputDecoration = inputDecorationBuilder!.call(defaultInputDecoration);
+    }
+
     Widget widget = TextFormField(
       controller: controller,
       onChanged: onChanged,
@@ -188,36 +231,7 @@ class InputField extends StatelessWidget {
       readOnly: readOnly ?? false,
       onTap: onTap,
       obscureText: isObscure ?? false,
-      decoration: inputDecoration ??
-          InputDecoration(
-            filled: fillColor != null,
-            fillColor: fillColor,
-            hintText: hintText,
-            hintStyle: allTextStyle ?? hintStyle,
-            contentPadding: contentPadding ??
-                const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 15,
-                ),
-            prefixIcon: prefixIconWidget,
-            suffixIcon: suffixIcon == null
-                ? null
-                : Icon(
-                    suffixIcon!,
-                    size: 25,
-                  ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                10,
-              ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: borderColor ?? kColorBlue),
-              borderRadius: BorderRadius.circular(
-                10,
-              ),
-            ),
-          ),
+      decoration: defaultInputDecoration,
     );
 
     if (elevation != null) {

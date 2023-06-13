@@ -26,10 +26,10 @@ class _FormExampleScreenState extends State<FormExampleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Form Example'),
+        title: const Text('Form Example'),
       ),
       body: ListView(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         children: [
           ...fieldInfos.entries.map(
             (e) => Container(

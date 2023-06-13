@@ -9,16 +9,16 @@ class RegularFieldsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Regular Fields Example'),
+        title: const Text('Regular Fields Example'),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),
         children: [
-          InputField(
+          const InputField(
             borderColor: Colors.purple,
             labelText: 'Example',
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           SearchField(
             onChanged: (val) {
               debugPrint(val);

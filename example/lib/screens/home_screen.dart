@@ -1,6 +1,5 @@
 import 'package:example/screens/regular_fields_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:sm_input_field/utils/constants.dart';
 
 import 'form_example_screen.dart';
 
@@ -28,16 +27,16 @@ class _HomeScreenState extends State<HomeScreen> {
               'Form Example': const FormExampleScreen(),
             }.entries.map(
                   (e) => Container(
-                    margin: EdgeInsets.symmetric(vertical: 25),
+                    margin: const EdgeInsets.symmetric(vertical: 25),
                     child: MaterialButton(
                       onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => e.value)),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
-                        side: BorderSide(color: Colors.blue),
+                        side: const BorderSide(color: Colors.blue),
                       ),
                       child: Text(
                         e.key,
-                        style: TextStyle(fontSize: 18),
+                        style: const TextStyle(fontSize: 18),
                       ),
                     ),
                   ),

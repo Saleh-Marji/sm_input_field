@@ -1,5 +1,12 @@
 
 
+## 1.3.1
+
+<h2>Added:</h2>
+<ul>
+    <li>Added the InputDecorationBuilder functionality in FieldInfo for copyWith use</li>
+</ul>
+
 ## 1.3.0
 
 <h2>Added:</h2>
