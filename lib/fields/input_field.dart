@@ -35,6 +35,7 @@ class InputField extends StatelessWidget {
     this.labelStyle,
     this.labelIsBold,
     this.inputDecorationBuilder,
+    this.borderRadius,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -53,6 +54,7 @@ class InputField extends StatelessWidget {
     TextStyle? hintStyle,
     TextStyle? innerLabelStyle,
     bool? labelIsBold,
+    BorderRadius? borderRadius,
   }) =>
       InputField(
         controller: info.controller,
@@ -86,6 +88,7 @@ class InputField extends StatelessWidget {
         labelIsBold: labelIsBold,
         onChanged: info.onChanged,
         inputDecorationBuilder: inputDecorationBuilder,
+        borderRadius: borderRadius,
       );
 
   /// the controller of the field
@@ -170,6 +173,10 @@ class InputField extends StatelessWidget {
   /// specifies if the label should be bold
   final bool? labelIsBold;
 
+  ///specifies borderRadius of the text field including the material widget (which gives shadow effect if elevation
+  ///is not null)
+  final BorderRadius? borderRadius;
+
   @override
   Widget build(BuildContext context) {
     Widget? prefixIconWidget;
@@ -198,22 +205,13 @@ class InputField extends StatelessWidget {
                 vertical: 15,
               ),
           prefixIcon: prefixIconWidget,
-          suffixIcon: suffixIcon == null
-              ? null
-              : Icon(
-                  suffixIcon!,
-                  size: 25,
-                ),
+          suffixIcon: suffixIcon == null ? null : Icon(suffixIcon!, size: 25),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(
-              10,
-            ),
+            borderRadius: borderRadius ?? BorderRadius.circular(10),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: borderColor ?? kColorBlue),
-            borderRadius: BorderRadius.circular(
-              10,
-            ),
+            borderRadius: borderRadius ?? BorderRadius.circular(10),
           ),
         );
 
@@ -236,9 +234,7 @@ class InputField extends StatelessWidget {
 
     if (elevation != null) {
       widget = Material(
-        borderRadius: BorderRadius.circular(
-          10,
-        ),
+        borderRadius: borderRadius ?? BorderRadius.circular(10),
         elevation: elevation!,
         child: widget,
       );
