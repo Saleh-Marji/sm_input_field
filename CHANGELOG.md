@@ -1,5 +1,12 @@
 
 
+## 1.3.3
+
+<h2>Added:</h2>
+<ul>
+    <li>Added focus node field in InputField</li>
+</ul>
+
 ## 1.3.2
 
 <h2>Added:</h2>

@@ -36,6 +36,7 @@ class InputField extends StatelessWidget {
     this.labelIsBold,
     this.inputDecorationBuilder,
     this.borderRadius,
+    this.focusNode,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -55,6 +56,7 @@ class InputField extends StatelessWidget {
     TextStyle? innerLabelStyle,
     bool? labelIsBold,
     BorderRadius? borderRadius,
+    FocusNode? focusNode,
   }) =>
       InputField(
         controller: info.controller,
@@ -89,6 +91,7 @@ class InputField extends StatelessWidget {
         onChanged: info.onChanged,
         inputDecorationBuilder: inputDecorationBuilder,
         borderRadius: borderRadius,
+        focusNode: focusNode,
       );
 
   /// the controller of the field
@@ -173,9 +176,12 @@ class InputField extends StatelessWidget {
   /// specifies if the label should be bold
   final bool? labelIsBold;
 
-  ///specifies borderRadius of the text field including the material widget (which gives shadow effect if elevation
-  ///is not null)
+  /// specifies borderRadius of the text field including the material widget (which gives shadow effect if elevation
+  /// is not null)
   final BorderRadius? borderRadius;
+
+  /// specifies the focus node of the text field
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -220,6 +226,7 @@ class InputField extends StatelessWidget {
     }
 
     Widget widget = TextFormField(
+      focusNode: focusNode,
       controller: controller,
       onChanged: onChanged,
       style: allTextStyle ?? textStyle ?? kTextStyleMain,
