@@ -1,5 +1,12 @@
 
 
+## 1.3.4
+
+<h2>Fixed:</h2>
+<ul>
+    <li>Fixed material's unexpected background color and changed it to transparent</li>
+</ul>
+
 ## 1.3.3
 
 <h2>Added:</h2>

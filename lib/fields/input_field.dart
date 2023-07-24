@@ -213,11 +213,11 @@ class InputField extends StatelessWidget {
           prefixIcon: prefixIconWidget,
           suffixIcon: suffixIcon == null ? null : Icon(suffixIcon!, size: 25),
           border: OutlineInputBorder(
-            borderRadius: borderRadius ?? BorderRadius.circular(10),
+            borderRadius: this.borderRadius ?? BorderRadius.circular(10),
           ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: borderColor ?? kColorBlue),
-            borderRadius: borderRadius ?? BorderRadius.circular(10),
+            borderRadius: this.borderRadius ?? BorderRadius.circular(10),
           ),
         );
 
@@ -239,10 +239,18 @@ class InputField extends StatelessWidget {
       decoration: defaultInputDecoration,
     );
 
+
+    BorderRadius? borderRadius;
+    var border = defaultInputDecoration.border;
+    if(border is OutlineInputBorder) {
+      borderRadius = border.borderRadius;
+    }
+
     if (elevation != null) {
       widget = Material(
-        borderRadius: borderRadius ?? BorderRadius.circular(10),
+        borderRadius: this.borderRadius ?? borderRadius ?? BorderRadius.circular(10),
         elevation: elevation!,
+        color: Colors.transparent,
         child: widget,
       );
     }
