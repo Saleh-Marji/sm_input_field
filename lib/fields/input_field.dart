@@ -37,6 +37,7 @@ class InputField extends StatelessWidget {
     this.inputDecorationBuilder,
     this.borderRadius,
     this.focusNode,
+    this.textDirection,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -57,6 +58,7 @@ class InputField extends StatelessWidget {
     bool? labelIsBold,
     BorderRadius? borderRadius,
     FocusNode? focusNode,
+    TextDirection? textDirection,
   }) =>
       InputField(
         controller: info.controller,
@@ -66,9 +68,7 @@ class InputField extends StatelessWidget {
         suffixIcon: info.suffixIcon,
         inputDecoration: inputDecoration,
         fillColor: fillColor,
-        labelText: info.label == null
-            ? null
-            : '${info.label}${(info.required ?? false) ? (info.requiredString ?? ' (Required)') : ''}',
+        labelText: info.label == null ? null : '${info.label}${(info.required ?? false) ? (info.requiredString ?? ' (Required)') : ''}',
         inputType: info.inputType,
         isMultiline: info.multiLine,
         innerLabelText: info.innerLabel == null
@@ -92,6 +92,7 @@ class InputField extends StatelessWidget {
         inputDecorationBuilder: inputDecorationBuilder,
         borderRadius: borderRadius,
         focusNode: focusNode,
+        textDirection: textDirection,
       );
 
   /// the controller of the field
@@ -183,6 +184,9 @@ class InputField extends StatelessWidget {
   /// specifies the focus node of the text field
   final FocusNode? focusNode;
 
+  /// specifies the text direction of the hint and text
+  final TextDirection? textDirection;
+
   @override
   Widget build(BuildContext context) {
     Widget? prefixIconWidget;
@@ -237,12 +241,12 @@ class InputField extends StatelessWidget {
       onTap: onTap,
       obscureText: isObscure ?? false,
       decoration: defaultInputDecoration,
+      textDirection: textDirection,
     );
-
 
     BorderRadius? borderRadius;
     var border = defaultInputDecoration.border;
-    if(border is OutlineInputBorder) {
+    if (border is OutlineInputBorder) {
       borderRadius = border.borderRadius;
     }
 

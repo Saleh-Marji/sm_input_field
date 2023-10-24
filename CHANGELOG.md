@@ -1,5 +1,12 @@
 
 
+## 1.3.5
+
+<h2>Added:</h2>
+<ul>
+    <li>Added textDirection param to inputField</li>
+</ul>
+
 ## 1.3.4
 
 <h2>Fixed:</h2>
