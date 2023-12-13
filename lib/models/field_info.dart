@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 ///This is a class to simplify the creation of a form (shown in the examples section)
 
@@ -57,6 +58,12 @@ class FieldInfo {
   /// specifies the onChanged method
   void Function(String input)? onChanged;
 
+  /// specifies the validator of the form field
+  final FormFieldValidator<String>? validator;
+
+  /// specifies the formatters of the form field
+  final List<TextInputFormatter>? inputFormatters;
+
   FieldInfo({
     TextEditingController? controller,
     String? initialValue,
@@ -75,6 +82,8 @@ class FieldInfo {
     this.maxLines,
     this.minLines,
     this.onChanged,
+    this.inputFormatters,
+    this.validator,
   }) : controller = controller ?? TextEditingController(text: initialValue);
 
   /// a named constructor that
@@ -93,12 +102,15 @@ class FieldInfo {
     VoidCallback? onTap,
     int? minLines,
     int? maxLines,
+    FormFieldValidator<String>? validator,
+    List<TextInputFormatter>? inputFormatters,
     void Function(String input)? onChanged,
   }) =>
       FieldInfo(
         controller: controller,
         initialValue: initialValue,
         multiLine: true,
+        inputType: TextInputType.multiline,
         hint: hint,
         label: label,
         innerLabel: innerLabel,
@@ -112,6 +124,8 @@ class FieldInfo {
         maxLines: maxLines,
         minLines: minLines,
         onChanged: onChanged,
+        validator: validator,
+        inputFormatters: inputFormatters,
       );
 
   /// calls the dispose method of the text editing controller
@@ -126,6 +140,7 @@ class FieldInfo {
   ///previous instance and the new one
   FieldInfo copyWith({
     TextEditingController? controller,
+    String? initialValue,
     bool? required,
     String? requiredString,
     IconData? prefixIcon,
@@ -140,6 +155,8 @@ class FieldInfo {
     IconData? suffixIcon,
     int? minLines,
     int? maxLines,
+    FormFieldValidator<String>? validator,
+    List<TextInputFormatter>? inputFormatters,
     void Function(String input)? onChanged,
   }) =>
       FieldInfo(
@@ -159,5 +176,8 @@ class FieldInfo {
         minLines: minLines ?? this.minLines,
         maxLines: maxLines ?? this.maxLines,
         onChanged: onChanged ?? this.onChanged,
+        validator: validator ?? this.validator,
+        inputFormatters: inputFormatters ?? this.inputFormatters,
+        initialValue: initialValue,
       );
 }

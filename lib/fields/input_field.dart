@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../models/field_info.dart';
 import '../utils/constants.dart';
@@ -38,6 +39,8 @@ class InputField extends StatelessWidget {
     this.borderRadius,
     this.focusNode,
     this.textDirection,
+    this.validator,
+    this.inputFormatters,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
@@ -76,7 +79,7 @@ class InputField extends StatelessWidget {
             : '${info.innerLabel}${((info.label == null && (info.required ?? false)) ? (info.requiredString ?? '*') : '')}',
         labelFieldSpace: labelFieldSpace ?? 10,
         borderColor: borderColor,
-        elevation: elevation ?? 3,
+        elevation: elevation,
         onTap: info.onTap,
         readOnly: info.readOnly,
         isObscure: info.isObscure,
@@ -93,6 +96,8 @@ class InputField extends StatelessWidget {
         borderRadius: borderRadius,
         focusNode: focusNode,
         textDirection: textDirection,
+        inputFormatters: info.inputFormatters,
+        validator: info.validator,
       );
 
   /// the controller of the field
@@ -187,6 +192,12 @@ class InputField extends StatelessWidget {
   /// specifies the text direction of the hint and text
   final TextDirection? textDirection;
 
+  /// specifies the validator of the form field
+  final FormFieldValidator<String>? validator;
+
+  /// specifies the formatters of the form field
+  final List<TextInputFormatter>? inputFormatters;
+
   @override
   Widget build(BuildContext context) {
     Widget? prefixIconWidget;
@@ -242,6 +253,8 @@ class InputField extends StatelessWidget {
       obscureText: isObscure ?? false,
       decoration: defaultInputDecoration,
       textDirection: textDirection,
+      inputFormatters: inputFormatters,
+      validator: validator,
     );
 
     BorderRadius? borderRadius;

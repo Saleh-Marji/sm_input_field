@@ -1,5 +1,12 @@
 
 
+## 1.4.0
+
+<h2>Added:</h2>
+<ul>
+    <li>Added validator and inputFormatters to InputField and FieldInfo</li>
+</ul>
+
 ## 1.3.5
 
 <h2>Added:</h2>
