@@ -1,5 +1,12 @@
 
 
+## 1.4.1
+
+<h2>Added:</h2>
+<ul>
+    <li>Added onTapOutside</li>
+</ul>
+
 ## 1.4.0
 
 <h2>Added:</h2>

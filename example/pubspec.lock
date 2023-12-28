@@ -124,10 +124,10 @@ packages:
     dependency: "direct main"
     description:
       name: sm_input_field
-      sha256: "3549afecce537a9aef91959137a7b5c633e14363ef1dd5b32974278dbe99fe62"
+      sha256: "11d9eb607a03d30273b34f6da7d4d9a6b8c4493e93d9cfa7be411e2b21cb3b04"
       url: "https://pub.dev"
     source: hosted
-    version: "1.4.0"
+    version: "1.4.1"
   source_span:
     dependency: transitive
     description:

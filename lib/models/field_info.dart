@@ -52,6 +52,9 @@ class FieldInfo {
   /// specifies the action to be performed if the field is tapped
   VoidCallback? onTap;
 
+  /// specifies the action to be performed if the outside of the field is tapped
+  void Function(PointerDownEvent pointerDownEvent)? onTapOutside;
+
   /// specifies if the field input is obscured
   bool? isObscure;
 
@@ -84,6 +87,7 @@ class FieldInfo {
     this.onChanged,
     this.inputFormatters,
     this.validator,
+    this.onTapOutside,
   }) : controller = controller ?? TextEditingController(text: initialValue);
 
   /// a named constructor that
@@ -100,6 +104,7 @@ class FieldInfo {
     String? requiredString,
     bool? readOnly,
     VoidCallback? onTap,
+    void Function(PointerDownEvent pointerDownEvent)? onTapOutside,
     int? minLines,
     int? maxLines,
     FormFieldValidator<String>? validator,
@@ -119,6 +124,7 @@ class FieldInfo {
         required: required,
         readOnly: readOnly,
         onTap: onTap,
+        onTapOutside: onTapOutside,
         isObscure: isObscure,
         requiredString: requiredString,
         maxLines: maxLines,
@@ -151,6 +157,7 @@ class FieldInfo {
     bool? multiLine,
     bool? isObscure,
     VoidCallback? onTap,
+    void Function(PointerDownEvent pointerDownEvent)? onTapOutside,
     bool? readOnly,
     IconData? suffixIcon,
     int? minLines,
@@ -170,6 +177,7 @@ class FieldInfo {
         inputType: inputType ?? this.inputType,
         multiLine: multiLine ?? this.multiLine,
         onTap: onTap ?? this.onTap,
+        onTapOutside: onTapOutside ?? this.onTapOutside,
         isObscure: isObscure ?? this.isObscure,
         readOnly: readOnly ?? this.readOnly,
         suffixIcon: suffixIcon ?? this.suffixIcon,

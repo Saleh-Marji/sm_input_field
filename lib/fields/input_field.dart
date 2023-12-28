@@ -22,6 +22,7 @@ class InputField extends StatelessWidget {
     this.isMultiline,
     this.inputType,
     this.onTap,
+    this.onTapOutside,
     this.readOnly,
     this.isObscure,
     this.maxLines,
@@ -81,6 +82,7 @@ class InputField extends StatelessWidget {
         borderColor: borderColor,
         elevation: elevation,
         onTap: info.onTap,
+        onTapOutside: info.onTapOutside,
         readOnly: info.readOnly,
         isObscure: info.isObscure,
         minLines: info.minLines,
@@ -151,6 +153,9 @@ class InputField extends StatelessWidget {
 
   /// specifies the action to be taken when the field is tapped
   final VoidCallback? onTap;
+
+  /// specifies the action to be taken when the outside of the field is tapped
+  final void Function(PointerDownEvent pointerDownEvent)? onTapOutside;
 
   /// specifies content padding
   final EdgeInsets? contentPadding;
@@ -250,6 +255,7 @@ class InputField extends StatelessWidget {
       keyboardType: inputType,
       readOnly: readOnly ?? false,
       onTap: onTap,
+      onTapOutside: onTapOutside,
       obscureText: isObscure ?? false,
       decoration: defaultInputDecoration,
       textDirection: textDirection,
