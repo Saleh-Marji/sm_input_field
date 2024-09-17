@@ -1,5 +1,12 @@
 
 
+## 1.4.2
+
+<h2>Added:</h2>
+<ul>
+    <li>Added textAlign</li>
+</ul>
+
 ## 1.4.1
 
 <h2>Added:</h2>

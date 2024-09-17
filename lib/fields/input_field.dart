@@ -42,65 +42,49 @@ class InputField extends StatelessWidget {
     this.textDirection,
     this.validator,
     this.inputFormatters,
+    this.textAlign,
   }) : super(key: key);
 
   ///This constructor takes a field info object for the main properties (used mostly for forms)
-  factory InputField.fromFieldInfo(
+  InputField.fromFieldInfo(
     FieldInfo info, {
-    double? labelFieldSpace,
-    Color? borderColor,
-    double? elevation,
-    EdgeInsets? contentPadding,
-    InputDecoration? inputDecoration,
-    InputDecorationBuilder? inputDecorationBuilder,
-    Color? fillColor,
-    TextStyle? textStyle,
-    TextStyle? allTextStyle,
-    TextStyle? labelStyle,
-    TextStyle? hintStyle,
-    TextStyle? innerLabelStyle,
-    bool? labelIsBold,
-    BorderRadius? borderRadius,
-    FocusNode? focusNode,
-    TextDirection? textDirection,
-  }) =>
-      InputField(
-        controller: info.controller,
-        hintText: info.hint,
-        contentPadding: contentPadding,
-        prefixIcon: info.prefixIcon,
-        suffixIcon: info.suffixIcon,
-        inputDecoration: inputDecoration,
-        fillColor: fillColor,
-        labelText: info.label == null ? null : '${info.label}${(info.required ?? false) ? (info.requiredString ?? ' (Required)') : ''}',
-        inputType: info.inputType,
-        isMultiline: info.multiLine,
-        innerLabelText: info.innerLabel == null
+    this.labelFieldSpace,
+    this.borderColor,
+    this.elevation,
+    this.contentPadding,
+    this.inputDecoration,
+    this.inputDecorationBuilder,
+    this.fillColor,
+    this.textStyle,
+    this.allTextStyle,
+    this.labelStyle,
+    this.hintStyle,
+    this.innerLabelStyle,
+    this.labelIsBold,
+    this.borderRadius,
+    this.focusNode,
+    this.textDirection,
+    this.textAlign,
+    super.key,
+  })  : controller = info.controller,
+        hintText = info.hint,
+        prefixIcon = info.prefixIcon,
+        suffixIcon = info.suffixIcon,
+        labelText = info.label == null ? null : '${info.label}${(info.required ?? false) ? (info.requiredString ?? ' (Required)') : ''}',
+        inputType = info.inputType,
+        isMultiline = info.multiLine,
+        innerLabelText = info.innerLabel == null
             ? null
             : '${info.innerLabel}${((info.label == null && (info.required ?? false)) ? (info.requiredString ?? '*') : '')}',
-        labelFieldSpace: labelFieldSpace ?? 10,
-        borderColor: borderColor,
-        elevation: elevation,
-        onTap: info.onTap,
-        onTapOutside: info.onTapOutside,
-        readOnly: info.readOnly,
-        isObscure: info.isObscure,
-        minLines: info.minLines,
-        maxLines: info.maxLines,
-        hintStyle: hintStyle,
-        textStyle: textStyle,
-        labelStyle: labelStyle,
-        allTextStyle: allTextStyle,
-        innerLabelStyle: innerLabelStyle,
-        labelIsBold: labelIsBold,
-        onChanged: info.onChanged,
-        inputDecorationBuilder: inputDecorationBuilder,
-        borderRadius: borderRadius,
-        focusNode: focusNode,
-        textDirection: textDirection,
-        inputFormatters: info.inputFormatters,
-        validator: info.validator,
-      );
+        onTap = info.onTap,
+        onTapOutside = info.onTapOutside,
+        readOnly = info.readOnly,
+        isObscure = info.isObscure,
+        minLines = info.minLines,
+        maxLines = info.maxLines,
+        onChanged = info.onChanged,
+        inputFormatters = info.inputFormatters,
+        validator = info.validator;
 
   /// the controller of the field
   final TextEditingController? controller;
@@ -203,6 +187,9 @@ class InputField extends StatelessWidget {
   /// specifies the formatters of the form field
   final List<TextInputFormatter>? inputFormatters;
 
+  /// specifies text alignment
+  final TextAlign? textAlign;
+
   @override
   Widget build(BuildContext context) {
     Widget? prefixIconWidget;
@@ -261,6 +248,7 @@ class InputField extends StatelessWidget {
       textDirection: textDirection,
       inputFormatters: inputFormatters,
       validator: validator,
+      textAlign: textAlign ?? TextAlign.left,
     );
 
     BorderRadius? borderRadius;
